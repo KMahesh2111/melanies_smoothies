@@ -5,8 +5,7 @@ from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col 
 
 # Write directly to the app
-cnx = st.connection('snowflake')
-session = cnx.session()
+
 st.title(f"Customize Your Smoothie!")
 st.write(
   """Replace this example with your own code!
@@ -21,6 +20,8 @@ st.write(
 
 name = st.text_input('Name on smoothie')
 
+cnx = st.connection('snowflake')
+session = cnx.session()
 
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 # st.dataframe(data = my_dataframe, use_container_width = True)
